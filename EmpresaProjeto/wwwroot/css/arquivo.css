@@ -1,0 +1,112 @@
+﻿/* Navbar clean e moderna */
+.navbar {
+    background-color: #ffffff; /* Fundo branco para um design clean */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave e elegante */
+    transition: all 0.3s ease; /* Transição suave em todos os elementos */
+}
+
+/* Efeito de hover nos links */
+.navbar-nav .nav-link {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: 500; /* Texto mais sutil, não tão pesado */
+    color: #495057; /* Cor do texto mais suave */
+    border-radius: 30px; /* Bordas arredondadas para suavizar o visual */
+    transition: all 0.3s ease;
+}
+
+    /* Efeito hover nos links */
+    .navbar-nav .nav-link:hover {
+        background-color: #e9ecef; /* Cor suave no hover */
+        color: #007bff; /* Cor de texto ao passar o mouse */
+        box-shadow: inset 0 0 5px rgba(0, 123, 255, 0.3); /* Leve sombra ao passar o mouse */
+    }
+
+    /* Destacar item ativo */
+    .navbar-nav .nav-link.active {
+        color: #007bff; /* Cor ativa */
+        font-weight: 600; /* Aumenta o peso da fonte no item ativo */
+    }
+
+/* Navbar com links e ícones mais modernos */
+.navbar-nav .nav-link {
+    color: #495057; /* Texto mais suave e moderno */
+    font-size: 1rem; /* Mantém o tamanho ideal */
+    transition: color 0.3s ease; /* Suaviza a transição das cores */
+}
+
+    /* Ícones */
+    .navbar-nav .nav-link i {
+        margin-right: 10px;
+        font-size: 1.3rem; /* Aumenta um pouco o tamanho do ícone para maior destaque */
+        transition: transform 0.3s ease; /* Suaviza a animação ao interagir com os ícones */
+    }
+
+    /* Aumenta o ícone ao passar o mouse */
+    .navbar-nav .nav-link:hover i {
+        transform: scale(1.1); /* Aumenta o ícone suavemente */
+    }
+
+/* Navbar com transição suave de abertura */
+.navbar-collapse {
+    transition: opacity 0.4s ease-in-out;
+    background-color: #ffffff; /* Mantém o fundo limpo */
+}
+
+/* Botão de login */
+.navbar-nav .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    font-weight: 600;
+    padding: 8px 18px; /* Ajusta o padding para mais conforto */
+    border-radius: 25px; /* Borda arredondada para um visual mais moderno */
+    transition: all 0.3s ease;
+}
+
+    /* Efeito ao passar o mouse sobre o botão */
+    .navbar-nav .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: white;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Adiciona uma leve sombra de destaque */
+    }
+
+    /* Remover contorno no foco do botão */
+    .navbar-nav .btn-outline-primary:focus {
+        outline: none; /* Remove o contorno padrão */
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Adiciona um contorno de foco suave */
+    }
+
+/* Estilo responsivo para a barra de navegação */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Centraliza os itens no mobile */
+    }
+
+        .navbar-nav .nav-link {
+            padding: 10px 15px; /* Ajusta o padding para o mobile */
+        }
+
+    .navbar-brand {
+        font-size: 1.5rem; /* Aumenta o tamanho da marca no mobile */
+    }
+}
+
+/* Ajuste de contraste no hover */
+.navbar-nav .nav-link:hover {
+    background-color: #f1f3f5;
+    color: #0056b3; /* Contraste mais forte no hover */
+    transition: background-color 0.4s, color 0.4s ease;
+}
+
+/* Estilo de Navbar quando aberta */
+.navbar-collapse.collapse {
+    display: flex;
+    justify-content: space-between; /* Distribui os links de forma equidistante */
+    align-items: center;
+}
+
+/* Adicionando efeito ao botão "toggle" no mobile */
+.navbar-toggler-icon {
+    background-color: #007bff; /* Coloca uma cor de destaque no botão de menu no mobile */
+}
