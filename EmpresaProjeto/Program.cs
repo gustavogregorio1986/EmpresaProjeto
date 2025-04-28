@@ -1,4 +1,8 @@
 using EmpresaProjeto.Data.Context;
+using EmpresaProjeto.Data.Repository;
+using EmpresaProjeto.Data.Repository.Interface;
+using EmpresaProjeto.Service.Service;
+using EmpresaProjeto.Service.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DbContexto>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IEmpresaRepository, EmpresaRepository>();
+builder.Services.AddScoped<IEmpresaService, EmpresaService>();
 
 var app = builder.Build();
 
