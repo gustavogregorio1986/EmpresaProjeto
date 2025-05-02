@@ -1,3 +1,47 @@
-﻿@{
+﻿@model EmpresaProjeto.Models.EmpresaView // Substitua pelo namespace correto
+
+@{
     ViewData["Title"] = "Cadastrar";
 }
+
+<form asp-controller="Empresa" asp-action="Cadastar" method="post" class="mt-4">
+    <div class="form-group">
+        <label asp-for="NomeEmpresa"></label>
+        <input asp-for="NomeEmpresa" class="form-control" />
+        <span asp-validation-for="NomeEmpresa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cnpj"></label>
+        <input asp-for="Cnpj" class="form-control" />
+        <span asp-validation-for="Cnpj" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Setor"></label>
+        <input asp-for="Setor" class="form-control" />
+        <span asp-validation-for="Setor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CidadeModalidade"></label>
+        <input asp-for="CidadeModalidade" class="form-control" />
+        <span asp-validation-for="CidadeModalidade" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control">
+            <option value="">Selecione</option>
+            <option value="0">Inativo</option>
+            <option value="1">Ativo</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+</form>
