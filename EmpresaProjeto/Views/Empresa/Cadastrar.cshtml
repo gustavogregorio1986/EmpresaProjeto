@@ -13,7 +13,7 @@
 
     <div class="form-group">
         <label asp-for="Cnpj"></label>
-        <input asp-for="Cnpj" class="form-control" />
+        <input asp-for="Cnpj" class="form-control" name="Cnpj" />
         <span asp-validation-for="Cnpj" class="text-danger"></span>
     </div>
 
@@ -45,3 +45,19 @@
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>
 </form>
+
+
+@section Scripts{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cnpjInput = document.querySelector('[name="Cnpj"]');
+            cnpjInput.addEventListener('input', function (event) {
+                let value = event.target.value.replace(/\D/g, ''); // Remove tudo o que não é número
+                if (value.length <= 14) {
+                    value = value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5');
+                }
+                event.target.value = value;
+            });
+        });
+    </script>
+}
