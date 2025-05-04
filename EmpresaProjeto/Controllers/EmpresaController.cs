@@ -24,16 +24,19 @@ namespace EmpresaProjeto.Controllers
         {
             try
             {
-                EmpresaView empresaView = new EmpresaView();
-                empresaView.NomeEmpresa = empresa.NomeEmpresa;
-                empresaView.Cnpj = empresa.Cnpj;
-                empresaView.Setor = empresaView.Setor;
-                empresaView.CidadeModalidade = empresa.CidadeModalidade;
+                if (!ModelState.IsValid)
+                {
+                    EmpresaView empresaView = new EmpresaView();
+                    empresaView.NomeEmpresa = empresa.NomeEmpresa;
+                    empresaView.Cnpj = empresa.Cnpj;
+                    empresaView.Setor = empresaView.Setor;
+                    empresaView.CidadeModalidade = empresa.CidadeModalidade;
 
-                _empresaService.Adicionar(empresa);
-                return RedirectToAction("Cadastrar");
+                    _empresaService.Adicionar(empresa);
+                    TempData["MensagemSucesso"] = "Empresa cadastrada com sucesso!";
+                    return RedirectToAction("Cadastrar");
 
-                
+                }                
             }
             catch (Exception ex)
             {
