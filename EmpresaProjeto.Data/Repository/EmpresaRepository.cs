@@ -23,5 +23,15 @@ namespace EmpresaProjeto.Data.Repository
             _dbContexto.Add(empresa);
             _dbContexto.SaveChanges();
         }
+
+        public List<Empresa> ListarEmpresas(int paginaAtual, int itensPorPagina, out int totalIntens)
+        {
+            totalIntens = _dbContexto.Empresas.Count();
+
+            return _dbContexto.Empresas
+                .OrderBy(e => e.NomeEmpresa).Skip((paginaAtual - 1) * itensPorPagina)
+                .Take(totalIntens)
+                .ToList();
+        }
     }
 }

@@ -46,9 +46,21 @@ namespace EmpresaProjeto.Controllers
             return View(empresa);
         }
 
-        public IActionResult Consultar()
+        [HttpGet]
+        public IActionResult Consultar(int paginaAtual = 1, int itensPorPagina = 5)
         {
-            return View();
+            var empresas = _empresaService.ListarEmpresas(paginaAtual, itensPorPagina, out int total);
+
+            var viewModel = new IndexView
+            { 
+                Empresas = empresas,
+                TotalItens = total,
+                PaginaAtual = paginaAtual,
+                ItensPorPagina = itensPorPagina
+            };
+
+
+            return View(viewModel);
         }
 
         public IActionResult ListarAtivos()

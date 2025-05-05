@@ -10,5 +10,7 @@ namespace EmpresaProjeto.Data.Repository.Interface
     public interface IEmpresaRepository
     {
         void Adicionar(Empresa empresa);
+
+        List<Empresa> ListarEmpresas(int paginaAtual, int itensPorPagina, out int totalIntens);
     }
 }

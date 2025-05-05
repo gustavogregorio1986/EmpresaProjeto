@@ -10,5 +10,7 @@ namespace EmpresaProjeto.Service.Service.Interface
     public interface IEmpresaService
     {
         void Adicionar(Empresa empresa);
+
+        List<Empresa> ListarEmpresas(int paginaAtual, int itensPorPagina, out int totalIntens);
     }
 }

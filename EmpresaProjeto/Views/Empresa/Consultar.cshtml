@@ -1,7 +1,139 @@
-﻿@{
+﻿@model IndexView
+
+@{
     ViewData["Title"] = "Consultar";
 }
 
+<style>
+    .status-ativo {
+        background-color: #28a745;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    .status-inativo {
+        background-color: #dc3545;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+</style>
+
+
 <div class="container my-5">
    <h1 class="bg-secondary text-white text-center py-4">Consultar!</h1>
+    <p class="text-muted">Exibindo @Model.Empresas.Count de @Model.TotalItens registros</p>
 </div>
+
+@if (Model.Empresas.Any())
+{
+    <div class="mb-3">
+        <input type="text" id="buscaTabela" class="form-control" placeholder="Buscar...">
+    </div>
+    <table class="table" id="tabelaAlunos">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nome da Empresa</th>
+                <th scope="col">Cnpj</th>
+                <th scope="col">Setor</th>
+                <th scope="col">Ciadde e/ou modalidade</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empresa in Model.Empresas)
+            {
+                <tr>
+                    <td>@empresa.NomeEmpresa</td>
+                    <td>@empresa.Cnpj</td>
+                    <td>@empresa.Setor</td>
+                    <td>@empresa.CidadeModalidade</td>
+                    <td>
+                        <span class="@(empresa.Status == 1 ? "status-ativo" : "status-inativo")">
+                            @(empresa.Status == 1 ? "Ativo" : "Inativo")
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Paginação -->
+    <nav aria-label="Navegação de páginas">
+        <ul class="pagination justify-content-center">
+
+            <!-- Primeira Página -->
+            <li class="page-item @(Model.PaginaAtual == 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="Consultar"
+                   asp-route-paginaAtual="1"
+                   asp-route-itensPorPagina="@Model.ItensPorPagina">
+                    « Primeira
+                </a>
+            </li>
+
+            <!-- Página Anterior -->
+            <li class="page-item @(Model.PaginaAtual == 1 ? "disabled" : "")">
+                <a class="page-link" asp-action="Consultar"
+                   asp-route-paginaAtual="@(Model.PaginaAtual - 1)"
+                   asp-route-itensPorPagina="@Model.ItensPorPagina">
+                    ‹ Anterior
+                </a>
+            </li>
+
+            <!-- Números de Página -->
+            @for (int i = 1; i <= Model.TotalPaginas; i++)
+            {
+                <li class="page-item @(i == Model.PaginaAtual ? "active" : "")">
+                    <a class="page-link" asp-action="Consultar"
+                       asp-route-paginaAtual="@i"
+                       asp-route-itensPorPagina="@Model.ItensPorPagina">
+                        @i
+                    </a>
+                </li>
+            }
+
+            <!-- Próxima Página -->
+            <li class="page-item @(Model.PaginaAtual == Model.TotalPaginas ? "disabled" : "")">
+                <a class="page-link" asp-action="Consultar"
+                   asp-route-paginaAtual="@(Model.PaginaAtual + 1)"
+                   asp-route-itensPorPagina="@Model.ItensPorPagina">
+                    Próxima ›
+                </a>
+            </li>
+
+            <!-- Última Página -->
+            <li class="page-item @(Model.PaginaAtual == Model.TotalPaginas ? "disabled" : "")">
+                <a class="page-link" asp-action="Consultar"
+                   asp-route-paginaAtual="@Model.TotalPaginas"
+                   asp-route-itensPorPagina="@Model.ItensPorPagina">
+                    Última »
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    @section Scripts {
+    <script>
+        document.getElementById("buscaTabela").addEventListener("keyup", function () {
+            const termo = this.value.toLowerCase();
+            const linhas = document.querySelectorAll("#tabelaAlunos tbody tr");
+
+            linhas.forEach(linha => {
+                const textoLinha = linha.innerText.toLowerCase();
+                linha.style.display = textoLinha.includes(termo) ? "" : "none";
+            });
+        });
+    </script>
+
+    }
+
+}
+else
+{
+    <div class="alert alert-warning text-center" role="alert">
+        Nenhum dado encontrado na tabela.
+    </div>
+} 

@@ -22,5 +22,10 @@ namespace EmpresaProjeto.Service.Service
         {
             _empresaRepository.Adicionar(empresa);
         }
+
+        public List<Empresa> ListarEmpresas(int paginaAtual, int itensPorPagina, out int totalIntens)
+        {
+            return _empresaRepository.ListarEmpresas(paginaAtual, itensPorPagina, out totalIntens);
+        }
     }
 }
