@@ -17,5 +17,7 @@ namespace EmpresaProjeto.Data.Context
         }
 
         public DbSet<Empresa> Empresas { get; set; }
+
+        public DbSet<Mensagem> Mensagens { get; set; }
     }
 }

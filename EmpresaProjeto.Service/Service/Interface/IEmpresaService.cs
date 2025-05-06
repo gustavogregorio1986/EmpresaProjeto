@@ -11,6 +11,10 @@ namespace EmpresaProjeto.Service.Service.Interface
     {
         void Adicionar(Empresa empresa);
 
+        void AdicionarMensagem(Mensagem mensagem);
+
         List<Empresa> ListarEmpresas(int paginaAtual, int itensPorPagina, out int totalIntens);
+
+        List<Mensagem> ListarMensagens();
     }
 }

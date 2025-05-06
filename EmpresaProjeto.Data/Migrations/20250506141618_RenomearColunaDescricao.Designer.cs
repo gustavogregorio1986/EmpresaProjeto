@@ -4,6 +4,7 @@ using EmpresaProjeto.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpresaProjeto.Data.Migrations
 {
     [DbContext(typeof(DbContexto))]
-    partial class DbContextoModelSnapshot : ModelSnapshot
+    [Migration("20250506141618_RenomearColunaDescricao")]
+    partial class RenomearColunaDescricao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +59,7 @@ namespace EmpresaProjeto.Data.Migrations
                     b.Property<string>("Assunto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Descricao")
+                    b.Property<string>("Desricao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomePessoa")
